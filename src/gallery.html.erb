@@ -1,0 +1,20 @@
+<%
+title 'Gallery'
+stylesheet 'gallery'
+javascript 'gallery'
+
+gallery_images=Dir[File.join(src_dir,'images','gallery','*.jpg')].map do |x|
+	x.split('/').last
+end
+%>
+<span id="image-count"><%= gallery_images.size %></span>
+<div id="viewing-container">
+	<div id="viewing-pane">
+		<%gallery_images.each do |img|%>
+		<div style="background-image:url(/images/gallery/<%=img%>)"></div>
+		<%end%>
+	</div>
+</div>
+<div id="details">
+	<div id="attribution"><button onclick="move_left();">Left</button> Image taken by Abhishek Chaturvedi <button onclick="move_right();">Right</button></div>
+</div>

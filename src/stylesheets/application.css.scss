@@ -1,0 +1,62 @@
+@import 'bourbon';
+@import url(http://fonts.googleapis.com/css?family=Average+Sans);
+
+$sans-serif:'Average Sans','Arial','Helvetica',sans-serif;
+
+html,body{
+	font-family:$sans-serif;
+	font-size:14px;
+	margin:0;
+	padding:0;
+	background-color:#03affd;
+}
+
+#license{
+	margin-top:20px;
+	text-align:center;
+	font-size:10px;
+	width:100%;
+}
+
+.subtitle{
+	font-size:30px;
+}
+
+#main-header{
+	font-size:50px;
+	padding-left:100px;
+	background-image:url('/images/logo.png');
+	background-size:76px 94px;
+	background-position:left center;
+	background-repeat:no-repeat;
+	height:94px;
+	position:relative;
+}
+#navbar{
+	width:100%;
+	font-size:18px;
+	padding-left:5px;
+	$nav-items:2;
+	padding:0;
+	margin:0;
+	a{
+		display:inline-block;
+		text-decoration:none;
+		@include linear-gradient(top, #03affd 0%,#207cca 99%,#2989d8 100%,#7db9e8 100%);
+		color:black;
+		height:100%;
+		width:(99%/$nav-items);
+		padding-left:5px;
+		margin-right:-5px;
+	}
+	
+}
+
+#container{
+	width: 75%;
+	margin: 0 auto;
+	background-color: #FFF;
+	padding: 20px 40px 7px 40px;
+	border: solid 1px black;
+	margin-top: 20px;
+}

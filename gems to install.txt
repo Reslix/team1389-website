@@ -1,0 +1,10 @@
+to install gems, use the `gem install` command
+
+uglifier
+sinatra
+mimemagic
+coffee-script
+sass
+cocaine
+uglifier
+html_press
