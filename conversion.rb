@@ -112,18 +112,23 @@ if __FILE__ == $PROGRAM_NAME
   jpeg_compression=Cocaine::CommandLine.new("convert",":in -define jpeg:extent=400kb :out")
   
   Conversion::minify
+  FileUtils.mkdir_p(out_dir)
   
   Find.find(Conversion::src_dir) do |path|
     parts=path.gsub(Conversion::src_dir,'').split('/')
     parts.delete('')
-    name=parts.last
-    next if name.nil? or name[0]=='.' or parts.include?('bourbon')
+    next if parts.last.nil? or parts.last[0]=='.' or parts.include?('bourbon')
+    parts.last.gsub!('.scss','')
+    parts.last.gsub!('.coffee','')
+    parts.last.gsub!('.erb','')
     out_path=File.join(*([out_dir]+parts))
     if File.directory?(path)
       FileUtils.mkdir_p(out_path)
       next
-    elsif name.split('.').last=="jpg"
-      jpeg_compression.run :in=>path,:out=>out_path
+    elsif parts.last.split('.').last=="jpg"
+      unless File.exists?(out_path) and File.mtime(out_path)>File.mtime(path)
+        jpeg_compression.run :in=>path,:out=>out_path
+      end
     else
       type=Conversion::type(parts.join('/'))
       case type
