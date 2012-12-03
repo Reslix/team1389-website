@@ -13,7 +13,7 @@ get '/*' do
     cache_control :no_cache
     return send_file(File.join(Conversion::src_dir,path),:disposition=>'inline')
   elsif type==:not_found
-    not_found
+    status 404
     content_type 'text/html'
     return Conversion::convert("404.html")
   elsif type==:convert
