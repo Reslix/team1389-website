@@ -7,6 +7,17 @@
 	background-color:white;
 	overflow:hidden;
 	position:relative;
+	.loading{
+		width:100px;
+		margin-left:-50px;
+		margin-top:-10px;
+		font-size:18px;
+		position:absolute;
+		left:50%;
+		top:50%;
+		text-align:center;
+		height:20px;
+	}
 }
 #viewing-pane{
 	position:absolute;
@@ -18,7 +29,6 @@
 	div{
 		display:inline-block;
 		height:100%;
-		background-color:white;
 		background-repeat:no-repeat;
 		background-size:contain;
 		background-position:center center;

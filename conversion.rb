@@ -109,7 +109,7 @@ if __FILE__ == $PROGRAM_NAME
   require 'cocaine'
   require 'find'
   out_dir="./out"
-  jpeg_compression=Cocaine::CommandLine.new("convert",":in -define jpeg:extent=400kb :out")
+  jpeg_compression=Cocaine::CommandLine.new("convert",":in -define jpeg:extent=100kb :out")
   
   Conversion::minify
   FileUtils.mkdir_p(out_dir)

@@ -9,6 +9,7 @@ end
 %>
 <span id="image-count"><%= gallery_images.size %></span>
 <div id="viewing-container">
+	<div class="loading">Loading...</div>
 	<div id="viewing-pane">
 		<%gallery_images.each do |img|%>
 		<div style="background-image:url(/images/gallery/<%=img%>)"></div>

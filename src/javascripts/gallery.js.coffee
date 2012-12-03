@@ -5,18 +5,18 @@ target=0
 timer=null
 
 animate=(x)->
-	target=x
-	return if timer
-	timer=setInterval ->
-		if vpl>target
-			vpl-=Math.min(30,vpl-target)
-		else if vpl==target
-			clearInterval(timer)
-			timer=null
-		else#if vpl<target
-			vpl+=Math.min(30,target-vpl)
-		viewing_pane.style.left="#{vpl}px"
-	,10
+	#target=x
+	#return if timer
+	#timer=setInterval ->
+	#	if vpl>target
+	#		vpl-=Math.min(30,vpl-target)
+	#	else if vpl==target
+	#		clearInterval(timer)
+	#		timer=null
+	#	else#if vpl<target
+	#		vpl+=Math.min(30,target-vpl)
+	viewing_pane.style.left="#{x}px"
+	#,10
 
 OpenImage=(idx)->
 	current_idx=parseInt(idx)
@@ -40,7 +40,10 @@ $=(x)->document.getElementById(x)
 	else if evt.keyCode==37#left
 		move_left()
 
+loaded=false
 @onload= =>
+	return if loaded
+	loaded=true
 	@image_count=parseInt($('image-count').innerHTML)
 	vc=$('viewing-container')
 	@viewing_width=vc.offsetWidth||vc.clientWidth
@@ -54,3 +57,11 @@ $=(x)->document.getElementById(x)
 			node.style.left="#{x}px"
 			x+=viewing_width
 	OpenImage(0)
+if document.addEventListener
+	document.addEventListener('DOMContentLoaded',@onload,false)
+else if document.attachEvent
+	statechangedetector= =>
+		if document.readyState=='complete'
+			@onload()
+			document.detachEvent('onreadystatechange',statechangedetector)
+	document.attachEvent 'onreadystatechange',statechangedetector
