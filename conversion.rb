@@ -110,6 +110,7 @@ if __FILE__ == $PROGRAM_NAME
   require 'find'
   out_dir="./out"
   jpeg_compression=Cocaine::CommandLine.new("convert",":in -define jpeg:extent=100kb :out")
+  png_compression=Cocaine::CommandLine.new('pngcrush',"-rem alla -rem text :in :out",:swallow_stderr=>true)
   
   Conversion::minify
   FileUtils.mkdir_p(out_dir)
@@ -128,6 +129,10 @@ if __FILE__ == $PROGRAM_NAME
     elsif parts.last.split('.').last=="jpg"
       unless File.exists?(out_path) and File.mtime(out_path)>File.mtime(path)
         jpeg_compression.run :in=>path,:out=>out_path
+      end
+    elsif parts.last.split('.').last=="png"
+      unless File.exists?(out_path) and File.mtime(out_path)>File.mtime(path)
+        png_compression.run :in=>path,:out=>out_path
       end
     else
       type=Conversion::type(parts.join('/'))
