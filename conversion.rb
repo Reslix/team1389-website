@@ -118,7 +118,7 @@ if __FILE__ == $PROGRAM_NAME
   Find.find(Conversion::src_dir) do |path|
     parts=path.gsub(Conversion::src_dir,'').split('/')
     parts.delete('')
-    next if parts.last.nil? or parts.last[0]=='.' or parts.include?('bourbon') or parts.include?('layout')
+    next if parts.last.nil? or parts.last[0]=='.' or parts.include?('bourbon') or parts.include?('layout.html.erb')
     parts.last.gsub!('.scss','')
     parts.last.gsub!('.coffee','')
     parts.last.gsub!('.erb','')
