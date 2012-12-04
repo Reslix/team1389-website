@@ -1,6 +1,6 @@
 $= (x)->document.getElementById(x)
 search_engine_regex=/google.com|bing.com|yahoo.com|duckduckgo/
-@our_site_regex=/^http(s?):\/\/(www.)?team1389(.github)?.com\//
+our_site_regex=/^http(s?):\/\/(www.)?team1389(.github)?.com\//
 @onload= =>
 	ref=document.referrer
 	if ref==""
