@@ -109,8 +109,16 @@ if __FILE__ == $PROGRAM_NAME
   require 'cocaine'
   require 'find'
   out_dir="./out"
-  jpeg_compression=Cocaine::CommandLine.new("convert",":in -define jpeg:extent=100kb :out")
-  png_compression=Cocaine::CommandLine.new('pngcrush',"-rem alla -rem text :in :out",:swallow_stderr=>true)
+  
+  @cmds={}
+  def process(*arr)
+    cmd=arr.pop
+    @cmds.each {|ext| @cmds[ext]=cmd}
+  end
+  
+  jpeg_compression=
+  process 'jpg','jpeg',Cocaine::CommandLine.new("convert",":in -define jpeg:extent=100kb :out")
+  process 'png',Cocaine::CommandLine.new('pngcrush',"-rem alla -rem text :in :out",:swallow_stderr=>true)
   
   Conversion::minify
   FileUtils.mkdir_p(out_dir)
@@ -123,16 +131,13 @@ if __FILE__ == $PROGRAM_NAME
     parts.last.gsub!('.coffee','')
     parts.last.gsub!('.erb','')
     out_path=File.join(*([out_dir]+parts))
+    ext=parts.last.split('.').last
     if File.directory?(path)
       FileUtils.mkdir_p(out_path)
       next
-    elsif parts.last.split('.').last=="jpg"
+    elsif @cmds[ext]
       unless File.exists?(out_path) and File.mtime(out_path)>File.mtime(path)
-        jpeg_compression.run :in=>path,:out=>out_path
-      end
-    elsif parts.last.split('.').last=="png"
-      unless File.exists?(out_path) and File.mtime(out_path)>File.mtime(path)
-        png_compression.run :in=>path,:out=>out_path
+        @cmds[ext].run :in=>path,:out=>out_path
       end
     else
       type=Conversion::type(parts.join('/'))
