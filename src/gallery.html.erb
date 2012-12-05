@@ -8,6 +8,9 @@ gallery_images=Dir[File.join(src_dir,'images','gallery','*.jpg')].map do |x|
 end
 %>
 <span id="image-count"><%= gallery_images.size %></span>
+<div id="move-left">
+	<div>Left</div>
+</div>
 <div id="viewing-container">
 	<div class="loading">Loading...</div>
 	<div id="viewing-pane">
@@ -16,6 +19,9 @@ end
 		<%end%>
 	</div>
 </div>
+<div id="move-right">
+	<div>Right</div>
+</div>
 <div id="details">
-	<div id="attribution"><button onclick="move_left();">Left</button> Image taken by Abhishek Chaturvedi <button onclick="move_right();">Right</button></div>
+	<div id="attribution">Image taken by Abhishek Chaturvedi</div>
 </div>

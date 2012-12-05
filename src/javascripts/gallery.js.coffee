@@ -49,6 +49,8 @@ loaded=false
 	@viewing_width=vc.offsetWidth||vc.clientWidth
 	str="#{@viewing_width}px"
 	vc.style.height=str
+	$('move-left').style.height=str
+	$('move-right').style.height=str
 	x=0
 	@viewing_pane=$('viewing-pane')
 	for node in @viewing_pane.childNodes
@@ -57,6 +59,8 @@ loaded=false
 			node.style.left="#{x}px"
 			x+=viewing_width
 	OpenImage(0)
+	$('move-left').onclick=move_left
+	$('move-right').onclick=move_right
 if document.addEventListener
 	document.addEventListener('DOMContentLoaded',@onload,false)
 else if document.attachEvent

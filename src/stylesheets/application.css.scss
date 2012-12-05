@@ -54,6 +54,10 @@ html,body{
 	
 }
 
+#subcontents{
+	position:relative;
+}
+
 #container{
 	width: 75%;
 	margin: 0 auto;
@@ -61,4 +65,5 @@ html,body{
 	padding: 20px 40px 7px 40px;
 	border: solid 1px black;
 	margin-top: 20px;
+	position:relative;
 }
