@@ -113,7 +113,7 @@ if __FILE__ == $PROGRAM_NAME
   @cmds={}
   def process(*arr)
     cmd=arr.pop
-    @cmds.each {|ext| @cmds[ext]=cmd}
+    arr.each {|ext| @cmds[ext]=cmd}
   end
   
   jpeg_compression=
