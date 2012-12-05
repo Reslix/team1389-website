@@ -3,7 +3,14 @@
 	position:absolute;
 	left:50%;
 	border:none;
+	margin-top:5px;
 }
 #intro-clear{
-	height:315px;
+	height:325px;
+}
+.about-column{
+	width:46%;
+}
+.about-column.right{
+	float:right;
 }
