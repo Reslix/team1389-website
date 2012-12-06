@@ -73,8 +73,8 @@ class Conversion
     def stylesheet(*x)
       @stylesheets+=x.map {|x| "#{x}.css"}
     end
-    def javascript(*x)
-      @javascripts+=x.map {|x| "#{x}.js"}
+    def javascript(*args)
+      @javascripts+=args.map {|x| x.index('//') ? x : "/javascripts/#{x}.js"}
     end
     def get_binding
       binding

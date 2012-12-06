@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<title><%= title_string %></title>
 	<style type="text/css" media="all">
 	<%@stylesheets<<"application.css"%>
@@ -10,7 +9,7 @@
 	<%end%>
 	</style>
 	<%for js in @javascripts%>
-	<script src="/javascripts/<%=js%>" type="text/javascript" charset="utf-8"></script>
+	<script src="<%=js%>" type="text/javascript" charset="utf-8"></script>
 	<%end%>
 </head>
 <body>
