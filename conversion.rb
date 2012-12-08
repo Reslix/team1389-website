@@ -92,14 +92,13 @@ class Conversion
   
   def self.minify
     require 'uglifier'
-    require 'html_press'
     
     process :js do |js|
       Uglifier.compile(js)
     end
     @sass_options[:style]=:compressed
     process :html do |html|
-      HtmlPress.press(html)
+      html.gsub("\t","").gsub(/\n+/,"\n")
     end
   end
 end

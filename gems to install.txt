@@ -7,6 +7,5 @@ coffee-script
 sass
 cocaine
 uglifier
-html_press
 
 ALSO, ensure you have ImageMagick and pngcrush installed.
