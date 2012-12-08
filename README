@@ -1,0 +1,2 @@
+server.rb is a development server, which generates output on the fly
+conversion.rb (when run) will perform minifications and move everything into the out directory.
