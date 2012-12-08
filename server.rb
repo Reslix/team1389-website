@@ -2,6 +2,8 @@ require './conversion'
 require 'sinatra'
 require 'mimemagic'
 
+$development_server=true
+
 get '/' do
   redirect to('/index.html')
 end
