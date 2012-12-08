@@ -1,2 +1,12 @@
 <%javascript '404'%>
-The page you are looking for cannot be found. <span id="extra-info"></span>
+The page you are looking for cannot be found. <span id="extra-info"></span> <div id="submitting-report"></div>
+<div class="invisible">
+	<form action="https://docs.google.com/spreadsheet/formResponse?formkey=dHVSSnVNSGliTDhIR3dROGtXV0habXc6MQ&amp;ifq" method="POST" id="404-form" target="404-form-target">
+		<input type="hidden" name="entry.0.single" value="" id="404-page-url">
+		<input type="hidden" name="entry.1.single" value="" id="404-referrer-url"/>
+		<input type="hidden" name="pageNumber" value="0"/>
+		<input type="hidden" name="backupCache" value=""/>
+		<input type="hidden" name="submit-soon" id="404-submit-field" value="Submit"/>
+	</form>
+	<iframe id="404-form-target" name="404-form-target"></iframe>
+</div>
