@@ -98,7 +98,9 @@ class Conversion
     end
     @sass_options[:style]=:compressed
     process :html do |html|
-      html.gsub("\t","").gsub(/\n+/,"\n")
+      html=html.gsub("\t","").gsub(/\n+/,"\n")
+      idx=html.index("\n")
+      html[0..idx]+html[idx..html.length].gsub("\n","")
     end
   end
 end
